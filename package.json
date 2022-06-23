@@ -1,4 +1,8 @@
 {
+    "name": "mocho-chai-automated-testing",
+    "version": "0.0.1",
+    "description": "This TDD project uses chai assertions, a test driven development library under the mocha, a light weight nodejs test framework.",
+    "main": "app.js",
     "dependencies": {
         "chai": "^4.3.6",
         "chai-http": "^4.3.0",
@@ -7,6 +11,6 @@
     "scripts": {
         "test": "mocha"
     },
-
+    "license": "MIT",
     "author": "Mark Nguyen"
 }

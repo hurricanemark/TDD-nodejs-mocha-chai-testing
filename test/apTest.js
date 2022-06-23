@@ -5,7 +5,7 @@ const Chef = require('../app');
 describe('Chef test', function() {
 	let chef = Chef;
 
-	it.skip('check if the restaurant is safe:');
+	// it.skip('check if the restaurant is safe:');
 
 	it('check the dish for valid name,', function(){
 		assert.isString(chef.checkMenu(), 'string');
@@ -40,4 +40,8 @@ describe('Chef test', function() {
 		assert.isBoolean(restaurant, chef.delivery);
 	});
 	
+	it('#isMenuAnArray', function(){
+		var menu = chef.isMenuAnArray();
+		assert.isArray(menu, chef.dishes); 
+	});
 });

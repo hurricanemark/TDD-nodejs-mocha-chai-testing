@@ -12,6 +12,7 @@ Chef.prototype.checkMenu = function() {
 	return dish;
 };
 
+/* function check custmers if they are being served */
 Chef.prototype.customersFed = function (){
 	if (this.customers >= 1){
 		console.log("Customer fed with good food!");
@@ -46,6 +47,12 @@ Chef.prototype.foodDelivery = function(){
 	console.log("delivery service ", this.delivery);
 	 return this.delivery;
 };
+
+Chef.prototype.isMenuAnArray = function(){
+	console.log("#isMenuAnArray", Array.isArray(this.dishes));
+	return this.dishes;
+};
+
 
 var chef = new Chef();
 
