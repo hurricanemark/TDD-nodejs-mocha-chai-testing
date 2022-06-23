@@ -28,7 +28,7 @@ Chef.prototype.customersFed = function (){
 	return this.customers;
 };
 
-
+/* functon checks business availability */
 Chef.prototype.closeForRenovation = function(){
 
 	if (this.doors == 'Open') {
@@ -43,11 +43,13 @@ Chef.prototype.closeForRenovation = function(){
 	}
 };
 
+/* function check business features */
 Chef.prototype.foodDelivery = function(){
 	console.log("delivery service ", this.delivery);
 	 return this.delivery;
 };
 
+/* function check menu as an array */
 Chef.prototype.isMenuAnArray = function(){
 	console.log("#isMenuAnArray", Array.isArray(this.dishes));
 	return this.dishes;
