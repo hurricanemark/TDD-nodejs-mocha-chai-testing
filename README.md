@@ -1,6 +1,6 @@
 # Test Driven Development -- Nodejs-mocha-chai-testing
  
- Typically, QA engineers begin to write unit tests right after completing static testing(reviews of project documents).  Naturally, unit tests will fail at first, and would soon pass when developers refactored their development code.  This process produces strong and structurally organized codebase that is test driven code. 
+ Typically, QA engineers begin to write unit tests right after completing static testing(reviews of project documents).  Naturally, unit tests will fail at first, and would soon pass when developers refactored their development code.  This process produces strong and structurally organized codebase that is test driven code, where new features will not introduce breaking changes.
 
  This TDD project uses chai assertions [Chai Assertion Library](https://www.chaijs.com/api/assert/), a test driven development library under the mocha, a light weight nodejs test framework.  Although Mocha can be paired with any of the assertion libraries, it is often paired with Chai.
 
