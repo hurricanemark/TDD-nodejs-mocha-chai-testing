@@ -64,20 +64,63 @@ describe('Chef test', function() {
 		// assert.isOk(false, 'this will fail');
 	});
 
-	/* Assert that object is falsy */
+	/* Assert that object is falsy 
+	.isNotOk(object, [message])
+	*/
 	it('#isNotOk', () => {
 		// assert.isNotOk('everything', 'this will fail');
 		assert.isNotOk(false, 'this will pass');
 	});
 
-	/* Asserts equal, notEqual */
+	/* Asserts equal, notEqual 
+	.equal(actual, expected, [message])
+	.notEqual(actual, expected, [message])
+	*/
 	it('#equal, #notEqual', () => {
 		assert.equal(3, '3', '== coerces values to strings');
 		assert.notEqual(3, 4, 'these numbers are not equal');
 	});
 
+	/*
+	.fail([message])
+	.fail(actual, expected, [message], [operator])
+	*/
+	it('#fail', () => {
+		assert.fail();
+		assert.fail('Input error!');
+		assert.fail(1,2);
+		assert.fail(1,2, "customer error message", ">");
+		assert.fail(1,2, undefined, ">");
+	});
 
+	/*
+		.strictEqual(actual, expected, [message])
+		.notStrictEqual(actual, expected, [message]) -->Asserts strict inequality (!==) of actual and expected.
+		.deepEqual(actual, expected, [message]) --> actual is deeply equal to expect
+	*/
+	it('#strictEqual, #notStrictEqual, #deepEqual, #notDeepEqual', () => {
+		assert.strictEqual(true, true, 'these booleans are strictly equal');
+		assert.strictEqual("Emily", "Emily", 'these strings are strictly equal');
+		assert.notStrictEqual('cat', 'dog', 'no coercion for strict equality');
+		assert.deepEqual({ tea: 'green' }, { tea: 'green' });
+		assert.notDeepEqual({ tea: 'green' }, { tea: 'jasmine' });
+	});
 
+	/*
+	Asserts valueToCheck is strictly greater than (>) valueToBeAbove
+		.isAbove(valueToCheck, valueToBeAbove, [message])
+	*/
+	it('#isAbove', () => {
+		assert.isAbove(5,2, '5 is strictly greater than 2');
+	});
 
+	/*
+	Asserts valueToCheck is greater than or equal to (>=) valueToBeAtLeast
+		.isAtLeast(valueToCheck, valueToBeAtLeast, [message])
+	*/
+	it ('#isAtLeast', () => {
+		assert.isAtLeast(5, 2, '5 is greater or equal to 2');
+		assert.isAtLeast(3, 3, '3 is greater or equal to 3');
+	});
 	
 });
