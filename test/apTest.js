@@ -44,4 +44,40 @@ describe('Chef test', function() {
 		var menu = chef.isMenuAnArray();
 		assert.isArray(menu, chef.dishes); 
 	});
+
+	it('#menuItemHasChicken', () => {
+		expect(chef.dishes).to.include('Orange chicken');
+	});
+
+	it('#menuLength', () => {
+		expect(chef.dishes).to.have.lengthOf(4);
+	});
+
+	it('#isEmptyArray, #foobar', () => {
+		assert('foo' !== 'bar', 'foo is not bar');
+		assert(Array.isArray([]), 'empty arrays are arrays');
+	});
+
+	/* Asserts that object is truthy */
+	it('#isOK', () => {
+		assert.isOk('everything', 'everything is ok');
+		// assert.isOk(false, 'this will fail');
+	});
+
+	/* Assert that object is falsy */
+	it('#isNotOk', () => {
+		// assert.isNotOk('everything', 'this will fail');
+		assert.isNotOk(false, 'this will pass');
+	});
+
+	/* Asserts equal, notEqual */
+	it('#equal, #notEqual', () => {
+		assert.equal(3, '3', '== coerces values to strings');
+		assert.notEqual(3, 4, 'these numbers are not equal');
+	});
+
+
+
+
+	
 });
