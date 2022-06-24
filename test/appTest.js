@@ -86,6 +86,7 @@ describe('Chef test', function() {
 	.fail(actual, expected, [message], [operator])
 	*/
 	it('#fail', () => {
+		// expect to throw AssertionError
 		assert.fail();
 		assert.fail('Input error!');
 		assert.fail(1,2);
@@ -186,7 +187,6 @@ describe('Chef test', function() {
 
 	Asserts that the target is either null or undefined.
 		.notExists
-
 	*/
 	it('#exists, #notExists', () => {
 		var foo = 'hi';
@@ -205,8 +205,8 @@ describe('Chef test', function() {
 	it('#isDefined, #isUndefined', () => {
 		var tea;
 		assert.isUndefined(tea, 'no tea defined');
-		tea = 'cup of chai';
-		assert.isDefined(tea, 'tea has been defined');
+		var tEa = 'cup of chai';
+		assert.isDefined(tEa, 'tea has been defined');
 	});
 
 	/*
@@ -253,5 +253,83 @@ describe('Chef test', function() {
 		var menue = 'green|chai|oolong';
 		assert.isNotArray(menue, 'what kind of tea do we want?');
 	});
+
+
+	/*
+	Asserts that value’s type is name, as determined by Object.prototype.toString.
+		.typeOf(value, name, [message])
+	*/
+	it ('#typeOf', () => {
+		assert.typeOf({ tea: 'chai' }, 'object', 'we have an object');
+		assert.typeOf(['chai', 'jasmine'], 'array', 'we have an array');
+		assert.typeOf('tea', 'string', 'we have a string');
+		assert.typeOf(/tea/, 'regexp', 'we have a regular expression');
+		assert.typeOf(null, 'null', 'we have a null');
+		assert.typeOf(undefined, 'undefined', 'we have an undefined');
+	});
+
+	/*
+	Asserts that value is a string.
+		.isString(value, [message])
+
+	Asserts that value is not a string.
+		.isNotString(value, [message])
+	*/
+	it('#isString, #isNotString', () =>{
+		var teaOrder = 'chai';
+		assert.isString(teaOrder, 'order placed');
+		teaOrder = 4;
+		assert.isNotString(teaOrder, 'order placed');
+	});
+
+	/*
+	Asserts that value is a number.
+		.isNumber(value, [message])
+
+	Asserts that value is not a number.
+		.isNotNumber(value, [message])
+	*/
+	it('#isNumber, #isNotNumber', () =>{
+		var cups = 2;
+		assert.isNumber(cups, 'how many cups');
+		var cups = '2 cups please';
+		assert.isNotNumber(cups, 'how many cups');
+	});
+
+
+	/*
+	Asserts that value is a finite number. Unlike .isNumber, this will fail for NaN and Infinity.
+		.isFinite(value, [message])
+	*/
+	it('#isFinite', () => {
+		var cups = 2;
+		assert.isFinite(cups, 'how many cups');
+		// try {
+		// 	assert.isFinite(NaN); // throws
+		// } catch (AssertionError) {
+		// 	console.log(AssertionError);
+		// }
+		assert.isFinite(NaN); // expect to throw AssertionError
+	});
+
+
+	/*
+	Asserts that value is a boolean.
+		.isBoolean(value, [message])
+
+	Asserts that value is not a boolean.
+		.isNotBoolean(value, [message])
+	*/
+	it('#isBoolean, #isNotBoolean', () => {
+		var teaReady = true, teaServed = false;
+		assert.isBoolean(teaReady, 'is the tea ready');
+		assert.isBoolean(teaServed, 'has tea been served');
+		
+		teaReady = 'yep', teaServed = 'nope';
+		assert.isNotBoolean(teaReady, 'is the tea ready');
+		assert.isNotBoolean(teaServed, 'has tea been served');
+	});
+
+
 
 });
