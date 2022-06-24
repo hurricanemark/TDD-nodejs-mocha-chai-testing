@@ -108,10 +108,13 @@ describe('Chef test', function() {
 
 	/*
 	Asserts valueToCheck is strictly greater than (>) valueToBeAbove
+	Asserts valueToCheck is strictly less than (<) valueToBeBelow
 		.isAbove(valueToCheck, valueToBeAbove, [message])
+		.isBelow(valueToCheck, valueToBeBelow, [message])
 	*/
-	it('#isAbove', () => {
+	it('#isAbove, #isBelow', () => {
 		assert.isAbove(5,2, '5 is strictly greater than 2');
+		assert.isBelow(4,9, '4 is strictly less than 9');
 	});
 
 	/*
@@ -123,4 +126,132 @@ describe('Chef test', function() {
 		assert.isAtLeast(3, 3, '3 is greater or equal to 3');
 	});
 	
+	/*
+	Asserts valueToCheck is less than or equal to (<=)
+		.isAtMost(valueToCheck, valueToBeAtMost, [message])
+		
+	*/
+	it('#isAtMost', () => {
+		assert.isAtMost(3,6,'3 is less than or equal to 6');
+		assert.isAtMost(4, 4, '4 is less than or equal to 4');
+	});
+
+	/*
+	Asserts that value is true.
+		.isTrue(value, [message])
+
+	*/
+	it('#isTrue, #isFalse, #isNotTrue, #isNotFalse', () => {
+		var teaServed = true;
+		var tea = 'tasty chai';
+		assert.isTrue(teaServed, 'the tea has been served');
+		assert.isNotTrue(tea, 'great, time for tea!');
+
+		teaServed = false;
+		assert.isFalse(teaServed, 'no tea yet? hmm...');
+		tea = 'tasty chai';
+		assert.isNotFalse(tea, 'great, time for tea!');
+	});
+
+	/*
+	Asserts that value is null.
+		.isNull(value, [message])
+
+	Asserts that value is not null.
+		.isNotNull(value, [message])
+
+	*/
+	it('#isNull, #isNotNull', () => {
+		var tea = 'tasty chai';
+		var err = null;
+		assert.isNull(err, 'there was no error');
+		assert.isNotNull(tea, 'great, time for tea!');
+	});
+
+	/*
+	Asserts that value is NaN.
+		.isNaN
+	Asserts that value is not NaN.
+		.isNotNaN
+	*/
+	it('#isNaN, #isNotNaN', () => {
+		assert.isNaN(NaN, 'NaN is NaN');
+		assert.isNotNaN(4, '4 is not NaN');
+	});
+
+
+	/*
+	Asserts that the target is neither null nor undefined.
+		.exists
+
+	Asserts that the target is either null or undefined.
+		.notExists
+
+	*/
+	it('#exists, #notExists', () => {
+		var foo = 'hi';
+		var bar = null, baz;
+		assert.exists(foo, 'foo is neither `null` nor `undefined`');
+		assert.notExists(bar);
+		assert.notExists(baz, 'baz is either null or undefined');
+	});
+
+	/*
+	Asserts that value is undefined.
+		.isUndefined(value, [message])
+	Asserts that value is not undefined.
+		.isDefined(value, [message])
+	*/
+	it('#isDefined, #isUndefined', () => {
+		var tea;
+		assert.isUndefined(tea, 'no tea defined');
+		tea = 'cup of chai';
+		assert.isDefined(tea, 'tea has been defined');
+	});
+
+	/*
+	Asserts that value is a function.
+		.isFunction(value, [message])
+
+	Asserts that value is not a function.
+		.isNotFunction(value, [message])
+	*/
+	it('#isFunction, #isNotFunction', () => {
+		function serveTea() { return 'cup of tea'; };
+		assert.isFunction(serveTea, 'great, we can have tea now');
+		var serveTea = [ 'heat', 'pour', 'sip' ];
+		assert.isNotFunction(serveTea, 'great, we have listed the steps');
+	});
+
+
+	/*
+	Asserts that value is an object of type ‘Object’ (as revealed by Object.prototype.toString). The assertion does not match subclassed objects.
+		.isObject(value, [message])
+
+	Asserts that value is not an object of type ‘Object’ (as revealed by Object.prototype.toString).
+		.isNotObject(value, [message])
+	*/
+	it('#isObject, #isNotObject', () => {
+		var selection = { name: 'Chai', serve: 'with spices' };
+		assert.isObject(selection, 'tea selection is an object');
+		selection = 'chai';
+		assert.isNotObject(selection, 'tea selection is not an object');
+		assert.isNotObject(null, 'null is not an object');
+	});
+
+
+	/*
+	Asserts that value is an array.
+		.isArray(value, [message])
+
+	Asserts that value is not an array.
+		.isNotArray(value, [message])
+	*/
+	it('#isArray, #isNotArray', () => {
+		var menu = [ 'green', 'chai', 'oolong' ];
+		assert.isArray(menu, 'what kind of tea do we want?');
+		var menue = 'green|chai|oolong';
+		assert.isNotArray(menue, 'what kind of tea do we want?');
+	});
+
 });
